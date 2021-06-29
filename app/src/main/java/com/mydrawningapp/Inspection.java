@@ -28,6 +28,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -37,11 +38,13 @@ public class Inspection extends Activity implements OnClickListener {
     //custom drawing view
     private DrawingView drawView;
     //buttons
-    private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn,btn_camera;
+    private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn,btn_camera,sharp_btn,btn_angle;
     public static final String MyPREFERENCES = "RUFUTECH";
     SharedPreferences sharedpreferences;
     Editor editor;
     String carphoto;
+
+    public int Shapesdrawing=1;
     //sizes
     private static final int CAPTURE_IMAGE_CAPTURE_CODE = 0;
     private float smallBrush, mediumBrush, largeBrush;
@@ -90,6 +93,12 @@ public class Inspection extends Activity implements OnClickListener {
         //save button
         saveBtn = (ImageButton)findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(this);
+
+
+        //save button
+        sharp_btn = (ImageButton)findViewById(R.id.sharp_btn);
+        sharp_btn.setOnClickListener(this);
+
 
 
     }
@@ -152,6 +161,69 @@ public class Inspection extends Activity implements OnClickListener {
                     brushDialog.dismiss();
                 }
             });
+            //show and wait for user interaction
+            brushDialog.show();
+        }
+        if(view.getId()==R.id.sharp_btn){
+            //draw button clicked
+            final Dialog brushDialog = new Dialog(this);
+            brushDialog.setTitle("Brush size:");
+            brushDialog.setContentView(R.layout.shape_choose);
+            //listen for clicks on size buttons
+            Button btn_circle = (Button)brushDialog.findViewById(R.id.btn_circle);
+            btn_circle.setOnClickListener(new OnClickListener(){
+                @Override
+                public void onClick(View v) {
+
+                    Shapesdrawing=1;
+                    drawView. setShapes(Shapesdrawing);
+                    brushDialog.dismiss();
+                }
+            });
+            Button btn_rectangle = (Button)brushDialog.findViewById(R.id.btn_rectangle);
+            btn_rectangle.setOnClickListener(new OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Shapesdrawing=2;
+                    drawView. setShapes(Shapesdrawing);
+                    brushDialog.dismiss();
+                }
+            });
+            Button btn_line = (Button)brushDialog.findViewById(R.id.btn_line);
+            btn_line.setOnClickListener(new OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Shapesdrawing=3;
+                    drawView. setShapes(Shapesdrawing);
+                    brushDialog.dismiss();
+                }
+            });
+            Button btn_curve = (Button)brushDialog.findViewById(R.id.btn_curve);
+            btn_curve.setOnClickListener(new OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Shapesdrawing=4;
+                    drawView. setShapes(Shapesdrawing);
+                    brushDialog.dismiss();
+                }
+            });
+            Button btn_angle = (Button)brushDialog.findViewById(R.id.btn_angle);
+            btn_angle.setOnClickListener(new OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Shapesdrawing=5;
+                    drawView. setShapes(Shapesdrawing);
+                    brushDialog.dismiss();
+                }
+            });
+
+
+
+
+
+
+
+
             //show and wait for user interaction
             brushDialog.show();
         }

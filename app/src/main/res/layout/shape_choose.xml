@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+ <Button
+     android:id="@+id/btn_circle"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:text="Circle"
+     >
+
+ </Button>
+
+
+    <Button
+        android:id="@+id/btn_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rectangle"
+        >
+
+    </Button>
+
+
+    <Button
+        android:id="@+id/btn_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Line"
+        >
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_curve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Curve"
+        >
+
+    </Button>
+
+
+    <Button
+        android:id="@+id/btn_angle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="angle"
+        >
+
+    </Button>
+
+
+</LinearLayout>
