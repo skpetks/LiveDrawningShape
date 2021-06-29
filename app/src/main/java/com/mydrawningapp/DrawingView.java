@@ -321,8 +321,9 @@ public class DrawingView extends View {
 	public  void drawAngel(float X1,float Y1,float X3,float Y3){
 
 
+
 		float X2=X1;
-		float Y2=Y1-400;
+		float Y2=Y1-500;
 		float f = 0.1F;
 		double d = f;
 
@@ -330,8 +331,12 @@ public class DrawingView extends View {
 	double angle=	CalculateAngle0To180( (double) X2,(double)  Y2,(double) X1,(double)  Y1,(double)  X3,(double)  Y3);
 		Log.d("angle", ""+angle);
 
-		Log.d("X1", ""+X2);
+		Log.d("X1", ""+X1);
+		Log.d("X2", ""+X2);
 		Log.d("X3", ""+X3);
+		Log.d("Y1", ""+Y1);
+		Log.d("Y2", ""+Y2);
+		Log.d("Y3", ""+Y3);
 		if(X1>X3){
 			double findnewangle=360-angle;
 			Log.d("Balance Angle", ""+findnewangle);
@@ -347,11 +352,9 @@ public class DrawingView extends View {
 
 		float radius = 20;
 		final RectF oval = new RectF();
-		oval.set(X2 - radius, Y2 - radius, X3 + radius, Y3+ radius);
-		Path myPath = new Path();
-
-		drawPath.arcTo(oval, startAngle, -(float) startAngle+80, true);
-
+		RectF rectF = new RectF(X2-100, Y2-100, X2+100, Y2+100);
+		drawCanvas.drawArc (rectF, 90, -(float) angle, true, drawPaint);
+//		drawCanvas.drawArc(oval, startAngle, Math.round(angle), false, drawPaint);
 
 		Paint paint2=new Paint();
 		paint2.setTextSize(35);
