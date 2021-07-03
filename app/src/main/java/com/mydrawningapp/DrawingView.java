@@ -322,13 +322,94 @@ public class DrawingView extends View {
 
 
 
+
+		float TempY=Y3-Y1;
+
+
+		if(Y1>Y3){
+			TempY=Y1+(Y1-Y3);
+			Log.d("TempY", ""+TempY);
+		}
+		else if(Y1<Y3){
+			TempY=Y1+(Y3-Y1);
+			Log.d("TempY", ""+TempY);
+		}
+		float Y2=Y1;//-500;
+		if(X1<X3){
+			Y2=Y1+(X3-X1);
+			Log.d("TempY2", ""+TempY);
+		}else if(X1>X3){
+			Y2=Y1+(X1-X3);
+			Log.d("TempY2", ""+TempY);
+		}
+
+		if(Y2<TempY){
+			Y2=TempY;
+		}
+
+
+		float X2=X1;
+//		float Y2=Y3;//-500;
+		float f = 0.1F;
+		double d = f;
+
+
+	double angle=	CalculateAngle0To180( (double) X1,(double)  Y1,(double) X2,(double)  Y2,(double)  X3,(double)  Y3);
+		Log.d("angle", ""+angle);
+
+		Log.d("X1", ""+X1);
+		Log.d("X2", ""+X2);
+		Log.d("X3", ""+X3);
+		Log.d("Y1", ""+Y1);
+		Log.d("Y2", ""+Y2);
+		Log.d("Y3", ""+Y3);
+		Log.d("TempY", ""+TempY);
+		if(X1>X3){
+			double findnewangle=360-angle;
+			Log.d("Balance Angle", ""+findnewangle);
+
+			angle=360-angle;
+
+			Log.d("Optain Angle", ""+angle);
+		}
+		drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+		drawPath.reset();
+
+		int startAngle = (int) (180 / Math.PI * Math.atan2(Y2 - Y3, X2 - X3));
+
+		float radius = 20;
+		final RectF oval = new RectF();
+		RectF rectF = new RectF(X1-100, Y1-100, X1+100, Y1+100);
+		drawCanvas.drawArc (rectF, 90, -(float) angle, true, drawPaint);
+//		drawCanvas.drawArc(oval, startAngle, Math.round(angle), false, drawPaint);
+
+		Paint paint2=new Paint();
+		paint2.setTextSize(35);
+		paint2.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+		drawCanvas.drawText(String.format("%,.0f",angle)+(char) 0x00B0, X1+20, Y1+50,paint2);
+		drawCanvas.drawLine(X2, Y2, X1, Y1, drawPaint);
+		drawCanvas.drawLine(X1, Y1, X3, Y3, drawPaint);
+		invalidate();
+
+
+
+
+
+	}
+
+
+
+	public  void drawAngelold(float X1,float Y1,float X3,float Y3){
+
+
+
 		float X2=X1;
 		float Y2=Y1-500;
 		float f = 0.1F;
 		double d = f;
 
 
-	double angle=	CalculateAngle0To180( (double) X2,(double)  Y2,(double) X1,(double)  Y1,(double)  X3,(double)  Y3);
+		double angle=	CalculateAngle0To180( (double) X2,(double)  Y2,(double) X1,(double)  Y1,(double)  X3,(double)  Y3);
 		Log.d("angle", ""+angle);
 
 		Log.d("X1", ""+X1);
